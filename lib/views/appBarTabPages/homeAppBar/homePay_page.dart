@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../viewmodel.dart';
+import '../../viewmodel.dart';
 
 
 class PayPage extends StatelessWidget {

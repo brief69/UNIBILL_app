@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:unibill/views/appBarTabPages/homePay_page.dart';
+import 'package:unibill/views/appBarTabPages/homeAppBar/homePay_page.dart';
 import 'package:unibill/views/components/appbar.dart';  
 
 class MainPage extends StatefulWidget {

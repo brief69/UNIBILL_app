@@ -16,6 +16,10 @@ class SettingsPage extends StatelessWidget {
           builder: (context, viewModel, child) {
             return ListView(
               children: [
+                ListTile(// TODO:rules_pageに遷移する
+                  title: const Text('UNIBILLルール'),
+                  onTap: () => viewModel.rules(),
+                ),
                 ListTile(// TODO:prioritySetting画面に遷移する(serchタブ上でもできるが、より詳細な設定を行えるようにする)
                   title: const Text('優先順位設定'),
                   onTap: () => viewModel.prioritySetting(),
