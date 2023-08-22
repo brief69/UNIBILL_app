@@ -1,7 +1,13 @@
-
+// /Users/ir/Desktop/unibill_app/unibill/lib/views/tabBarViews/home_page.dart
 
 import 'package:flutter/material.dart';
-import '';
+import 'package:unibill/views/tabBarViews/blac_tab.dart';
+import 'package:unibill/views/tabBarViews/fun_tab.dart';
+import 'package:unibill/views/tabBarViews/pay_tab.dart';
+import 'package:unibill/views/tabBarViews/rece_tab.dart';
+import 'package:unibill/views/tabBarViews/sett_tab.dart';
+
+
 
 class HomePage extends; StatelessWidget {
   HomePage({super.key});
