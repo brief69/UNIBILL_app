@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:unibill/viewmodels/settings_view_model.dart';
-import 'package:unibill/views/settingListPages/rules_page.dart';
+import 'package:unibill/views/settingsPageList/rules_page.dart';
 
 
 class SettingsPage extends StatelessWidget {
@@ -35,7 +35,14 @@ class SettingsPage extends StatelessWidget {
                   title: const Text('デフォルト画面設定'),
                   onTap: () => viewModel.defaultScreenSetting(),
                 ),
-
+                ListTile(// TODO:defaultCurrencySetting画面を遷移する(モーダル画面でデフォルトの通貨を設定できる)
+                  title: const Text('デフォルト通貨設定'),
+                  onTap: () => viewModel.defaultCurrencySetting(),
+                ),
+                ListTile(
+                  title: const Text('言語設定'),
+                  onTap: () => viewModel.defaultLanguageSetting(),
+                ),
                 ListTile(
                   title: const Text('メールアドレス'),
                   onTap: () => viewModel.editName(),

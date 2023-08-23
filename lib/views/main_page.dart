@@ -1,7 +1,11 @@
+// 
+
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:unibill/views/appBarTabPages/homeAppBar/homePay_page.dart';
-import 'package:unibill/views/components/appbar.dart';  
+import 'package:unibill/views/home_page.dart';
+import 'package:unibill/views/search_page.dart';
+import 'package:unibill/views/gate_page.dart';
+import 'package:unibill/views/history_page.dart';
+import 'package:unibill/views/wallet_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -10,61 +14,48 @@ class MainPage extends StatefulWidget {
   MainPageState createState() => MainPageState();
 }
 
-class MainPageState extends State<MainPage> {
-  int _selectedIndex = 0;
+class MainPageState extends State<MainPage> with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 5, vsync: this);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
-        length: 5, 
-        child: Scaffold(
-          appBar: _buildAppBarForSelectedIndex(_selectedIndex),
-          body: TabBarView(
-            children: [
-              BlacTab(),
-              PayTab(),
-              FunTab(),
-              ReceTab(),
-              SettTab(),
-            ],
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'HOME'),
-              BottomNavigationBarItem(icon: Icon(Icons.search), label: 'SEARCH'),
-              BottomNavigationBarItem(icon: Icon(Icons.swap_vert), label: 'GATE'),
-              BottomNavigationBarItem(icon: Icon(Icons.history), label: 'HISTORY'),
-              BottomNavigationBarItem(icon: Icon(Icons.account_balance_wallet), label: 'WALLET'),
-            ],
-            currentIndex: _selectedIndex,
-            selectedItemColor: const Color.fromARGB(255, 0, 56, 56),
-            onTap: (int index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-            },
-          ),
+    return Scaffold(
+      bottomNavigationBar: Material( 
+        color: Colors.green,
+        child: TabBar(
+          controller: _tabController,
+          indicatorColor: Colors.white,
+          unselectedLabelColor: Colors.white, 
+          labelColor: Colors.green,
+          tabs: const [
+            Tab(icon: Icon(Icons.home)),
+            Tab(icon: Icon(Icons.)),
+            Tab(icon: Icon(Icons.)),
+            Tab(icon: Icon(Icons.)),
+          ],
         ),
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: const [
+          HomePage(),
+          SearchPage(),
+          GatePage(),
+          WalletPage(),
+        ],
       ),
     );
   }
 
-  AppBar _buildAppBarForSelectedIndex(int index) {
-    switch (index) {
-      case 0:
-        return buildMainAppBarForHome();
-      case 1:
-        return buildMainAppBarForSearch();
-      case 2:
-        return buildMainAppBarForGate();
-      case 3:
-        return buildMainAppBarForHistory();
-      case 4:
-        return buildMainAppBarForWallet();
-
-      default:
-        return buildMainAppBarForHome();
-    }
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 }
