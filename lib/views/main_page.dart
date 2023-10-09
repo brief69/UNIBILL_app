@@ -1,61 +1,19 @@
-// 
 
-import 'package:flutter/material.dart';
-import 'package:unibill/views/home_page.dart';
-import 'package:unibill/views/search_page.dart';
-import 'package:unibill/views/gate_page.dart';
-import 'package:unibill/views/history_page.dart';
-import 'package:unibill/views/wallet_page.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+// main_page.dart
+// アプリのメインの下部にあるタブバーの部分
+// 左から順に、home,gate,wallet
+// homeは、ホーム画面
+// gateは、送金画面
+// walletは、ウォレット画面
+// タブの背景色は濃い緑で、文字色やアイコンの色は白、フォントはロボット
+// 現在選ばれているタブのアイコンは、濃い緑より少し明るくて、選ばれてない時の他のタブのアイコンは、薄い緑
+// タブのアイコンは、選ばれている時は、アイコンの下に文字が表示される
+// タブのアイコンは、選ばれていない時は、アイコンの下に文字は表示されない
 
-  @override
-  MainPageState createState() => MainPageState();
-}
+// homeとgateとwalletは、別ファイルに実装されている
+// homeは、home_page.dart
+// gateは、gate_page.dart
+// walletは、wallet_page.dart
 
-class MainPageState extends State<MainPage> with SingleTickerProviderStateMixin {
-  late TabController _tabController;
 
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 5, vsync: this);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: Material( 
-        color: Colors.green,
-        child: TabBar(
-          controller: _tabController,
-          indicatorColor: Colors.white,
-          unselectedLabelColor: Colors.white, 
-          labelColor: Colors.green,
-          tabs: const [
-            Tab(icon: Icon(Icons.home)),
-            Tab(icon: Icon(Icons.)),
-            Tab(icon: Icon(Icons.)),
-            Tab(icon: Icon(Icons.)),
-          ],
-        ),
-      ),
-      body: TabBarView(
-        controller: _tabController,
-        children: const [
-          HomePage(),
-          SearchPage(),
-          GatePage(),
-          WalletPage(),
-        ],
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
-}

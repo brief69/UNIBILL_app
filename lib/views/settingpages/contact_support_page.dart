@@ -1,9 +1,8 @@
-// /Users/ir/Desktop/pubOp_app/pub_op/lib/views/setteingPages/contact_support_page.dart
+
+
+// contact_support_page.dart
 
 import 'package:flutter/material.dart';
-import 'package:pub_op/Viewmodels/settings_view_model.dart';
-import 'package:provider/provider.dart';
-
 
 class ContactPage extends StatefulWidget {
   const ContactPage({Key? key}) : super(key: key);
@@ -23,7 +22,7 @@ class ContactPageState extends State<ContactPage> {
 
   @override
   Widget build(BuildContext context) {
-    var viewModel = Provider.of<SettingsViewModel>(context, listen: false);
+    var viewModel = Provider.of<ContactViewModel>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text('CONTACT', style: TextStyle(color: Colors.white)),
@@ -49,8 +48,12 @@ class ContactPageState extends State<ContactPage> {
             const SizedBox(height: 12.0),
             Center(
               child: ElevatedButton(
-                onPressed: () {
-                  // TODO:フィードバックを処理するロジックをここに書く
+                onPressed: () async {
+                  await viewModel.sendFeedback(contactController.text);
+                  contactController.clear();
+                  // ignore: use_build_context_synchronously
+                  Navigator.pop(context);
+
                 },
                 child: const Text('送信'),
               ),
@@ -59,8 +62,10 @@ class ContactPageState extends State<ContactPage> {
               child: ElevatedButton(
                 onPressed: viewModel.contactViaTwitter,
                 child: const Text('Twitterで問い合わせる'),
+              ),
+            )
           ],
-        ),
+        )
       ),
     );
   }

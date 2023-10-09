@@ -1,8 +1,7 @@
-// 
 
+
+// home_pay_page.dart
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../viewmodel.dart';
 
 
 class PayPage extends StatelessWidget {
@@ -40,7 +39,7 @@ class PayPage extends StatelessWidget {
                       onPressed: () {
                         viewModel.setTotalValue(0); // TODO:保有総額を隠すのは、0にするのではなく、保有総額の上を灰色にするようにする
                       },
-                      child: Text('隠す'),// TODO:隠すというテキストではなく、目に斜め線が入ったアイコンにする
+                      child: const Text('隠す'),// TODO:隠すというテキストではなく、目に斜め線が入ったアイコンにする
                     ),
                   ],
                 ),
