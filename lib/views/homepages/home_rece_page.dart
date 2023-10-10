@@ -3,8 +3,8 @@
 // home_rece_page.dart
 import 'package:flutter/material.dart';
 
-class ReceTab extends StatelessWidget {
-  const ReceTab({super.key});
+class RecePage extends StatelessWidget {
+  const RecePage({super.key});
 
   @override
   Widget build(BuildContext context) {

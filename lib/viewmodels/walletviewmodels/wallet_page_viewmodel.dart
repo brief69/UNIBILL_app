@@ -6,8 +6,9 @@ class WalletViewModel {
   List<ItemModel> items = [];
 
   Future<void> init() async {
-    // Load items from Firestore
-    // Assign to the items list
+    // TDOO:Load items from Firestore
+
+    // TODO:Assign to the items list
   }
 
   Widget buildGridItem(int index) {
@@ -26,3 +27,6 @@ class ItemModel {
   // Define your item model
   // e.g., id, title, backgroundColor, textColor, imageUrl
 }
+
+
+// TODO:Item detail page

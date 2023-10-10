@@ -1,6 +1,6 @@
 
 
-// Model部分。この部分は外部のAPIやデータベースからデータを取得するためのクラスです。
+// 外部APIやデータベースからデータを取得するためclassを作成
 class Portfolio {
   // 保有総額
   double totalValue;

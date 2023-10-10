@@ -1,19 +1,62 @@
 
 
-// main_page.dart
-// アプリのメインの下部にあるタブバーの部分
-// 左から順に、home,gate,wallet
-// homeは、ホーム画面
-// gateは、送金画面
-// walletは、ウォレット画面
-// タブの背景色は濃い緑で、文字色やアイコンの色は白、フォントはロボット
-// 現在選ばれているタブのアイコンは、濃い緑より少し明るくて、選ばれてない時の他のタブのアイコンは、薄い緑
-// タブのアイコンは、選ばれている時は、アイコンの下に文字が表示される
-// タブのアイコンは、選ばれていない時は、アイコンの下に文字は表示されない
+import 'package:flutter/material.dart';
+import 'package:unibill/views/homepages/home_page.dart';
+import 'package:unibill/views/gate_page.dart';
+import 'package:unibill/views/walletpages/wallet_page.dart';
 
-// homeとgateとwalletは、別ファイルに実装されている
-// homeは、home_page.dart
-// gateは、gate_page.dart
-// walletは、wallet_page.dart
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
 
+  @override
+  MainPageState createState() => MainPageState();
+}
 
+class MainPageState extends State<MainPage> {
+  int _selectedIndex = 0;
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    HomePage(),
+    GatePage(),
+    WalletPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            activeIcon: Icon(Icons.home, color: Colors.lightGreen),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.send),
+            label: 'Gate',
+            activeIcon: Icon(Icons.send, color: Colors.lightGreen),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_balance_wallet),
+            label: 'Wallet',
+            activeIcon: Icon(Icons.account_balance_wallet, color: Colors.lightGreen),
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.lightGreen,
+        backgroundColor: Colors.green,
+        onTap: _onItemTapped,
+      ),
+    );
+  }
+}

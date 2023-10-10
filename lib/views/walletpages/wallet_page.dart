@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:unibill/views/walletpages/wallet_tab_page.dart';
+import 'package:unibill/views/walletpages/history_tab_page.dart';
 
 class WalletPage extends StatefulWidget {
   const WalletPage({super.key});
@@ -51,8 +52,8 @@ class WalletPageState extends State<WalletPage> {
             Expanded(
               child: TabBarView(
                 children: [
-                  WalletTab(), // You need to implement WalletTab
-                  HistoryTab(), // You need to implement HistoryTab
+                  WalletTab(),
+                  HistoryTab(),
                 ],
               ),
             ),
@@ -64,26 +65,6 @@ class WalletPageState extends State<WalletPage> {
 }
 
 
-class HistoryTab extends StatelessWidget {
-  const HistoryTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    // Retrieve data from Firestore and display it as a list
-    // Add your logic here
-    return ListView(
-      // ...
-    );
-  }
-}
-
-// TODO: Implement other pages and functions as needed
-
-
-// wallet_page.dart
-// appbarの左にユーザーネームを表示する
-// ユーザーネームはタップできる
-// ユーザーネームをタップすると、ユーザーネームを変更するページに遷移する
 // ユーザーネームを変更するページでは、ユーザーネームを変更できる
 // ユーザーネームを変更するページでは、変更を保存できる
 // ユーザーネームをタップすると、profileページに遷移する
