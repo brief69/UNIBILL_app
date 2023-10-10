@@ -3,6 +3,8 @@
 // contact_support_page.dart
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:unibill/viewmodels/settingviewmodels/contact_viewmodel.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({Key? key}) : super(key: key);
@@ -22,7 +24,7 @@ class ContactPageState extends State<ContactPage> {
 
   @override
   Widget build(BuildContext context) {
-    var viewModel = Provider.of<ContactViewModel>(context, listen: false);
+    var viewModel = Provider<ContactViewModel>(context as Create<ContactViewModel, ProviderRef<ContactViewModel>>);
     return Scaffold(
       appBar: AppBar(
         title: const Text('CONTACT', style: TextStyle(color: Colors.white)),
