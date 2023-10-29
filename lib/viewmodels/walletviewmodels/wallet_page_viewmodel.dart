@@ -24,6 +24,7 @@ class WalletViewModel {
 }
 
 class ItemModel {
+  String get name => null;
   // Define your item model
   // e.g., id, title, backgroundColor, textColor, imageUrl
 }

@@ -1,5 +1,6 @@
 
 
+// main_page.dart
 import 'package:flutter/material.dart';
 import 'package:unibill/views/homepages/home_page.dart';
 import 'package:unibill/views/gate_page.dart';
@@ -53,8 +54,8 @@ class MainPageState extends State<MainPage> {
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.lightGreen,
-        backgroundColor: Colors.green,
+        unselectedItemColor: const Color.fromARGB(255, 31, 58, 0),
+        backgroundColor: const Color.fromARGB(255, 0, 20, 1),
         onTap: _onItemTapped,
       ),
     );

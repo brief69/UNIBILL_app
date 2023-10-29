@@ -1,7 +1,6 @@
 
 
 // contact_support_page.dart
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unibill/viewmodels/settingviewmodels/contact_viewmodel.dart';
@@ -28,7 +27,7 @@ class ContactPageState extends State<ContactPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('CONTACT', style: TextStyle(color: Colors.white)),
-        backgroundColor: const Color.fromARGB(255, 90, 0, 0),
+        backgroundColor: const Color.fromARGB(255, 0, 19, 3),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

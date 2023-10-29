@@ -1,19 +1,22 @@
 
 
+// home_page.dart
+// appbarに配置されたメインのタブを三つ持ってるだけのwidget
 import 'package:flutter/material.dart';
-import 'package:unibill/views/homepages/home_fun_page.dart';
-import 'package:unibill/views/homepages/home_pay_page.dart';
-import 'package:unibill/views/homepages/home_rece_page.dart';
+import 'package:unibill/views/homepages/fun_page.dart';
+import 'package:unibill/views/homepages/pay_page.dart';
+import 'package:unibill/views/homepages/rece_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   HomePageState createState() => HomePageState();
 }
 
-class HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
+class HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+  late final TabController _tabController;
+  int selectedIndex = 0;
 
   static final List<Widget> pages = <Widget>[
     const PayPage(),
@@ -21,49 +24,40 @@ class HomePageState extends State<HomePage> {
     const RecePage(),
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+    _tabController.addListener(() {
+      setState(() {
+        selectedIndex = _tabController.index;
+      });
     });
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: const Text(
-          'UniBill',
-          style: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
-        ),
-        bottom: const TabBar(
-          tabs: [
-            Tab(text: 'Pay'),
-            Tab(text: 'Fun'),
-            Tab(text: 'Receive'),
+        backgroundColor: const Color.fromARGB(255, 0, 30, 1),
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: const [
+            Tab(text: 'Pay'),// TODO: アイコンとフォントはrobot,色は白
+            Tab(text: 'Fun'),// TODO: アイコンとフォントはrobot,色は白
+            Tab(text: 'Rece'),// TODO: アイコンとフォントはrobot,色は白
           ],
         ),
       ),
-      body: pages.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.payment),
-            label: 'Pay',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.games),
-            label: 'Fun',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.money),
-            label: 'Rece',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.green[800],
-        unselectedItemColor: Colors.green[600],
-        onTap: _onItemTapped,
+      body: TabBarView(
+        controller: _tabController,
+        children: pages,
       ),
     );
   }

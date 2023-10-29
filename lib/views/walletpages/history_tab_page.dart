@@ -12,14 +12,14 @@ class HistoryTab extends ConsumerWidget {
   const HistoryTab({super.key});
 
   @override
-  Widget build(BuildContext context, ScopedReader ref) {
-    final history = ref(historyProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final history = ref.watch(historyProvider);
     return history.when(
       data: (snapshots) {
         return CustomScrollView(
           slivers: [
             SliverAppBar(
-              backgroundColor: Colors.green,
+              backgroundColor: const Color.fromARGB(255, 0, 22, 1),
               title: const Text(
                 '',
                 style: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
@@ -32,7 +32,7 @@ class HistoryTab extends ConsumerWidget {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  final data = snapshots.docs[index].data() as Map<String, dynamic>;
+                  final data = snapshots.docs[index].data();
                   return _HistoryItem(data: data);
                 },
                 childCount: snapshots.docs.length,
@@ -69,10 +69,6 @@ class _HistoryItem extends StatelessWidget {
   }
 }
 
-
-
-// appbarのタイトルはなし
-// appbarの背景色はgreen,文字色はwhite,fontはroboto
 // appbarには、pay, fun,receiveの三つのタブを配置する
 // それぞれの名前は、hist_paytab.dart,hist_funtab.dart,hist_recetab.dart
 // appbarのすぐ下には、レイアウトとしてそんなに大きくない、検索フォームを配置する
@@ -84,5 +80,3 @@ class _HistoryItem extends StatelessWidget {
 // 検索結果の履歴は、firestoreから取得する
 // 検索結果の履歴は、検索フォームに入力された文字列と、履歴の中身の文字列を比較して、検索フォームに入力された文字列が含まれているものだけを表示する
 // 検索フォームに入力された文字列が、履歴の中身の文字列に含まれていない場合、その履歴は表示しない
-
-// firestore,mvvm,riverpodで開発している

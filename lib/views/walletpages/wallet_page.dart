@@ -29,7 +29,7 @@ class WalletPageState extends State<WalletPage> {
             ),
           ),
         ),
-        backgroundColor: Colors.green,
+        backgroundColor: const Color.fromARGB(255, 0, 23, 1),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),

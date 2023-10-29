@@ -1,5 +1,0 @@
-
-
-class FunPage {
-  const FunPage();
-}

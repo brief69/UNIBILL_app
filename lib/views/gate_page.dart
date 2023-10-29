@@ -19,8 +19,11 @@ class GatePage extends StatelessWidget {
           ],
         ),
       ),
+
     );
   }
 }
 
-// I would like to use the bubble button library, but I don't think the bubble buttons are ready, so I wonder if I should implement them in a grid view with different sizes for once, ah, ?
+// gatepage要件
+// itemのグリッドビューで
+// item_widgetを作るかなー

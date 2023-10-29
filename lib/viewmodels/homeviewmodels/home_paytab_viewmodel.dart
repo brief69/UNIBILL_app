@@ -16,3 +16,5 @@ class PortfolioViewModel extends ChangeNotifier {
 
   // TODO:他にもAPIからデータを取得したり、データの更新を行うメソッドを追加する
 }
+
+// 
